@@ -1,8 +1,10 @@
+import { Uuid } from "../../../model/Uuid";
 import { Customer } from "../../../model/customer";
 import { CustomerRepository } from "../../../model/repository/CustomerRepository";
 
 
 export class CustomerRepositoryInMemory implements CustomerRepository{
+    
 
     private customerCollection: Array<Customer> = []
 
@@ -14,4 +16,7 @@ export class CustomerRepositoryInMemory implements CustomerRepository{
         return this.customerCollection
     }
 
+    getById(id: Uuid): Promise<Customer> {
+        throw new Error("Method not implemented.");
+    }
 }

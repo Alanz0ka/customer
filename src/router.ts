@@ -4,6 +4,7 @@ import { CustomerCreate } from "./controller/CustomerCreate"
 import { CustomerList } from "./controller/CustomerList"
 import { CustomerRepositoryDatabase } from "./infra/repository/database/CustomerRepositoryDatabase"
 import { CustomerRepository } from "./model/repository/CustomerRepository"
+import { CustomerById } from "./controller/CustomerGetById"
 
 const router = Router()
 
@@ -11,6 +12,7 @@ const router = Router()
 const repository = new CustomerRepositoryDatabase
 const customerCreate = new CustomerCreate(repository)
 const customerList = new CustomerList(repository)
+const customerById = new CustomerById(repository)
 
 
 router.post("/customer", (request: Request, response: Response) =>{
@@ -20,5 +22,10 @@ router.post("/customer", (request: Request, response: Response) =>{
 router.get("/customer", (request: Request, response: Response) =>{
     customerList.execute(request, response)
 })
+
+router.get("/customer/:id", (request: Request, response: Response) =>{
+    customerById.execute(request, response)
+})
+
 
 export {router}

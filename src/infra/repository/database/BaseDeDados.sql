@@ -7,3 +7,5 @@ CREATE TABLE customer (
     name VARCHAR(255),
     document VARCHAR(255)
 );
+
+SELECT * FROM customer;
